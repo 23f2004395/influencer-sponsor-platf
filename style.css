@@ -1,0 +1,15 @@
+*{
+    margin: 0px;
+}
+
+#container, #panel{
+    border: 2px solid black;
+}
+
+#panel {
+    width: 80%;
+    margin: auto;
+    height: 500px;
+}
+
+#
