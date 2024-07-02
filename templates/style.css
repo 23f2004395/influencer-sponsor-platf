@@ -1,7 +1,8 @@
 *{
     margin: 0px;
 }
-#container, #panel{
+#container{
+    margin: 1%;
 }
 
 #panel {
