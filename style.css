@@ -1,26 +1,24 @@
-
+*{
+    margin: 0px;
+}
 #container, #panel{
-    border: 2px solid black;
-    border-radius: 10px;
-    background-color: darkblue;
-    height: 540px;
 }
 
 #panel {
     width: 700px;
-    background-color:green;
-    height: 400px;
+    height: 550px;
     margin: auto;
-    text-align: center;
+    border: 2px solid lightblue;
+    border-radius: 10px;
     position: absolute;
     left: 20%;
-    top: 12%;
+    top: 15%;
 }
 
-input[type=text]{
-    background-color: lightgray;
-    border: none;
-    padding: 8px;
+
+#input-form{
+    width: 600px;
+    height: 400px;
+    margin: auto;
     border-radius: 10px;
-    box-shadow: 2px 2px 10px #ccc;
 }
