@@ -12,10 +12,11 @@ my_app = None
 def init_app():
     """function to create an application instance"""
     # creating sponsorship platform my_app
-    sponsor_app = Flask(__name__, template_folder='templates', static_folder='static')
+    sponsor_app = Flask(__name__)
 
     # connecting sponsor my_app to local directory's database
-    sponsor_app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(curr_dir + 'sponsors_app.db')
+    sponsor_app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///sponsors_app.sqlite3'
+    sponsor_app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     sponsor_app.app_context().push()
 
     # connecting SQLAlchemy database with sponsor my_app's database
@@ -30,4 +31,5 @@ my_app = init_app()
 from backend.controllers import *
 
 # running the my_app
-my_app.run(debug=True)
+if __name__ == '__main__':
+    my_app.run(debug=True)

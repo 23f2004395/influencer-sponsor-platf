@@ -9,38 +9,65 @@
 </head>
 <body>
     <div id="container">
-        <div id="panel" style="height: 600px;">
-          <br>
-          <div id="input-form">
-              <h2>Influencer Registeration</h2>
-              <form>
-                  <div class="form-control">
-                    <label for="Email" class="form-label">Email:</label>
-                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter Email">
-                    <small id="emailHelp" class="form-text text-muted">Enter a Valid Email</small>
-                  </div>
-                  <br>
-                  <div class="form-control">
-                    <label for="username" class="form-label">User Name:</label>
-                    <input type="text" class="form-control" id="username" aria-describedby="userHelp" placeholder="Enter user name">
-                    <small id="userHelp" class="form-text text-muted">Give a unique Username.</small>
-                  </div>
-                  <br>
-                  <div class="form-control">
-                    <label for="fullname" class="form-label">Enter your Name:</label>
-                    <input type="text" class="form-control" id="fullname" placeholder="Enter name">
-                  </div>
-                  <div class="form-group">
-                    <label for="pwd" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="pwd" placeholder="Password">
-                  </div>
-                  <br>
-                  <button type="submit" class="btn btn-primary">Register</button> 
-                  Existing user? <a href="/">Login</a>
-                  Want to register as sponsor? <a href="/sponsor_reg">Register</a>
-                </form>
-          </div>
+      <div id="panel" style="height: 1050px;">
+        <br>
+        <div id="input-form">
+          <h2>Influencer Registeration</h2>
+          <form action="/influencer_reg" method="POST">
+            <div class="form-control">
+              <label for="username" class="form-label">User Name:</label>
+              <input type="text" class="form-control" name="username" id="username" aria-describedby="userHelp" placeholder="Enter user name">
+              <small id="userHelp" class="form-text text-muted">Give a unique Username.</small>
+            </div>
+            <br>
+            <div class="form-control">
+              <label for="Email" class="form-label">Email:</label>
+              <input type="email" class="form-control" name="mail" id="email" aria-describedby="emailHelp" placeholder="Enter Email" value="{{e}}">
+              <small id="emailHelp" class="form-text text-muted">Enter a Valid Email</small>
+            </div>
+            <br>
+            <div class="form-control">
+              <label for="fullname" class="form-label">Enter your Name:</label>
+              <input type="text" class="form-control" name="name" id="fullname" placeholder="Enter name" value="{{n}}">
+            </div>
+            <br>
+            <div class="form-control">
+              <label for="niche" class="form-label">Enter your Niche:</label>
+              <input type="text" class="form-control" name="niche" id="niche" placeholder="Enter name" value="{{ni}}">
+            </div>
+            <br>
+            <div class="form-control">
+              <label for="insta" class="form-label">Instagram ID:</label>
+              <input type="text" class="form-control" name="insta" id="insta" placeholder="Enter Instagram ID" value="{{i}}">
+            </div>
+            <br>
+            <div class="form-control">
+              <label for="insta-flwrs" class="form-label">Instagram Followers:</label>
+              <input type="text" class="form-control" name="insta-flwrs" id="insta-flwrs" placeholder="Enter number of followers" value="{{i_f}}">
+            </div>
+            <br>
+            <div class="form-control">
+              <label for="yt" class="form-label">Enter your Youtube:</label>
+              <input type="text" class="form-control" name="yt" id="yt" placeholder="Enter youtube channel link" value="{{y}}">
+            </div>
+            <br>
+            <div class="form-control">
+              <label for="yt-flwrs" class="form-label">Youtube Followers:</label>
+              <input type="text" class="form-control" name="yt-flwrs" id="yt-flwrs" placeholder="Enter number of followers" value="{{y_f}}">
+            </div>
+            <br>
+            <div class="form-group">
+              <label for="pwd" class="form-label">Password</label>
+              <input type="password" class="form-control" name="pwd" id="pwd" placeholder="Password">
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary">Register</button> 
+            Existing user? <a href="/">Login</a>
+            Want to register as sponsor? <a href="/sponsor_reg">Register</a>
+            {{m}}
+          </form>
         </div>
+      </div>
     </div>
 </body>
 </html>
