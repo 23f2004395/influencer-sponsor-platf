@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Influencer Sponsorship Platform</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .search-bar {
+            margin-bottom: 20px;
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .filter-section {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+        .campaign-list {
+            margin-top: 20px;
+        }
+        .campaign-item {
+            margin-bottom: 15px;
+            padding: 15px;
+            background-color: #ffefd5;
+            border-radius: 5px;
+            border: 1px solid #ffdead;
+        }
+        .campaign-item h5 {
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1 class="text-center">Dashboard</h1>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <span class="navbar-brand mb-0 h1">Welcome {{name}}</span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/influ/{{name}}">Ad requests</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/influ/{{name}}/profile">Profile</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/influ/{{name}}/search">Search for Campaigns <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="search-bar">
+        <form action="/influ/{{name}}/search" method="post">
+            <div class="input-group">
+                <input type="text" class="form-control" name="search" placeholder="Search for campaigns..." aria-label="Search">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit">Search</button>
+                </div>
+            </div>
+        </form>
+        </div>
+        <h3>Campaigns:</h3>
+        {% if campaigns %}
+        <div class="campaign-list">
+            {% for campaign in campaigns %}
+            <div class="campaign-item">
+                <h5>Campaign : {{campaign[0]}}</h5>
+                <h6>Sponsorer : {{campaign[1]}}</h6>
+                <p>About : {{campaign[2]}}</p>
+                <br>
+                <p>Goals:{{campaign[3]}}</p>
+            </div>
+            {% endfor %}
+        </div>
+        <a href="/influ/{{name}}/search">{{goback}}</a>
+        {% else %}
+        <p class="error">No campaigns avilable.</p>
+        {% endif %}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

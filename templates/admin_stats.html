@@ -5,33 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        body {
-            background-color: #f8f9fa;
+        .charts-container {
+            display: flex;
+            justify-content: space-around;
+            width: 80%;
         }
-        #container {
-            margin: 30px auto;
-            max-width: 900px;
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        .chart-container {
+            width: 45%; /* Reduce size of each chart */
+            margin-top: 30px;
         }
-        .navbar {
-            margin-bottom: 20px;
-        }
-        .navbar-nav .nav-link {
-            font-weight: bold;
-        }
-        .nav-item.active .nav-link {
-            color: #007bff !important;
-        }
-        table {
-            width: 100%;
-            margin-top: 20px;
-        }
-        .table th, .table td {
+        h2 {
             text-align: center;
+            margin-bottom: 10px;
         }
     </style>
     <title>Influencer Sponsorship Platform</title>
@@ -44,7 +31,7 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="/admin/home">Home</a>
@@ -53,11 +40,86 @@
                         <a class="nav-link" href="/admin/stats">Stats <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="/admin/campadreq">Campaigns and Adrequests</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="/">Logout</a>
                     </li>
                 </ul>
             </div>
         </nav>
+
+        <h1>Influencers and Sponsors Analysis</h1>
+        <div class="charts-container">
+            <div class="chart-container">
+                <h2>Influencers vs Sponsors</h2>
+                <canvas id="pieChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h2>Flagged vs Unflagged</h2>
+                <canvas id="barChart"></canvas>
+            </div>
+        </div>
+
+        <script>
+            var pieCtx = document.getElementById('pieChart').getContext('2d');
+            var pieChart = new Chart(pieCtx, {
+                type: 'pie',
+                data: {
+                    labels: ['Influencers', 'Sponsors'],
+                    datasets: [{
+                        data: [{{count_influ}}, {{count_spon}}],
+                        backgroundColor: ['#36A2EB', '#FF6384'],
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                    }
+                }
+            });
+
+            var barCtx = document.getElementById('barChart').getContext('2d');
+            var barChart = new Chart(barCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Flagged Influencers', 'Unflagged Influencers', 'Flagged Sponsors', 'Unflagged Sponsors'],
+                    datasets: [{
+                        label: 'Flagged/Unflagged',
+                        data: [{{flag_influ}}, {{active_influ}}, {{flag_spon}}, {{active_spon}}],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    },
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: true
+                        }
+                    }
+                }
+            });
+        </script>
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybBogGzq8uwj40X4w8Xf7Fx5c5CF6fXQV4ANzFhAnar7pG1yc" crossorigin="anonymous"></script>

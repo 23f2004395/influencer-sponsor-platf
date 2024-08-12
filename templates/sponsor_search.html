@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Influencer Sponsorship Platform</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div id="container">
+        <h1 class="text-center">Dashboard</h1>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <span class="navbar-brand mb-0 h1">Welcome {{name}}</span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/spons/{{name}}">Current campaigns</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/spons/{{name}}/search">Search Influencers<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/spons/{{name}}/profile">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+    <div class="container">
+        <form action="/spons/{{name}}/search" method="post">
+            <div class="input-group mb-3">
+                <input name="search" type="text" class="form-control" placeholder="Search here">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit">Search</button>
+                </div>
+            </div>
+        </form>
+        <div class="table-container">
+            {% if influencers %}
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Niche</th>
+                        <th>Instagram ID</th>
+                        <th>Instagram Followers</th>
+                        <th>YouTube ID</th>
+                        <th>YouTube Subscribers</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for influencer in influencers %}
+                    <tr>
+                        <td>{{influencer[0]}}</td>
+                        <td>{{influencer[1]}}</td>
+                        <td>{{influencer[2]}}</td>
+                        <td>{{influencer[3]}}</td>
+                        <td>{{influencer[4]}}</td>
+                        <td>{{influencer[5]}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p class="error">
+                No such Influencer. Try again
+            </p>
+            {% endif %}
+            <a href="/spons/{{name}}/search">{{back}}</a>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

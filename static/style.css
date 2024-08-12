@@ -1,12 +1,5 @@
-*{
-    margin: 0px;
-}
-#container{
-    margin: 1%;
-}
-
 #panel {
-    width: 700px;   
+    width: 700px;
     margin: auto;
     border: 2px solid lightblue;
     border-radius: 10px;
@@ -21,4 +14,40 @@
     height: 400px;
     margin: auto;
     border-radius: 10px;
+}
+
+body {
+    background-color: #f8f9fa;
+    margin: 20px;
+}
+
+#container {
+    margin: 30px auto;
+    max-width: 900px;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.navbar {
+    margin-bottom: 20px;
+}
+.navbar-nav .nav-link {
+    font-weight: bold;
+}
+.nav-item.active .nav-link {
+    color: #007bff !important;
+}
+table {
+    width: 100%;
+    margin-top: 20px;
+}
+.table th, .table td {
+    text-align: center;
+}
+.error {
+color: red;
+font-weight: bold;
+margin-top: 20px;
+text-align: center;
 }

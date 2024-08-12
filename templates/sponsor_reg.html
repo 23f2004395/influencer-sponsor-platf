@@ -8,59 +8,61 @@
     <title>Sponsor Registeration</title>
 </head>
 <body>
-    <div id="container">
-      <div id="panel" style="height: 900px;">
+    <div>
+      <div id="panel" style="height: 900px ;width: 700px;">
         <br>
-        <div action="/sponsor_reg" method="POST">
-          <h2>Sponsor Registeration</h2>
-          <form  action="/sponsor_reg" method="POST">
-            <div class="form-control">
-              <label for="username" class="form-label">User Name:</label>
-              <input type="text" class="form-control" id="username" aria-describedby="userHelp" name="username" placeholder="Enter user name">
-              <small id="userHelp" class="form-text text-muted">Give a unique Username.</small>
-            </div>
-            <br>
-            <div class="form-control">
-              <label for="Email" class="form-label">Email:</label>
-              <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="mail" placeholder="Enter Email" value="{{e}}">
-              <small id="emailHelp" class="form-text text-muted">Enter a Valid Email</small>
-            </div>
-            <br>
-            <div class="form-control">
-              <label for="fullname" class="form-label">Enter your Name:</label>
-              <input type="text" class="form-control" id="fullname" name="name" placeholder="Enter user name" value="{{n}}">
-            </div>
-            <br>
-            <div class="form-control">
-              <label for="bn" class="form-label">Enter Brand Name:</label>
-              <input type="text" class="form-control" id="bn" name="bn" placeholder="Enter Brand name" value="{{bn}}">
-            </div>
-            <br>
-            <div class="form-control">
-              <label for="it" class="form-label"> Industry Type:</label>
-              <select name="it" class="form-select">
-                <option id="it" selected>Industry Type</option>
-                <option name="it" value="1">Primary</option>
-                <option name="it" value="2">Secondary</option>
-                <option name="it" value="3">Tertiary</option>
-                <option name="it" value="4">Quaternary</option>
-              </select>
-            </div>
-            <br>
-            <div class="form-control">
-              <label for="abt" class="form-label">Enter about your Brand:</label>
-              <input type="text" class="form-control" id="abt" name="abt"value="{{abt}}">
-            </div>
-            <div class="form-group">
-              <label for="pwd" class="form-label">Password</label>
-              <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Password">
-            </div>
-            <br>
-            <button type="submit" class="btn btn-primary">Register</button> 
-            Existing user? <a href="/">Login</a>
-            Want to register as influencer? <a href="/influencer_reg">Register</a>
-            {{m}}
-          </form>
+        <div id="input-form">
+          <div action="/sponsor_reg" method="POST">
+            <h2>Sponsor Registeration</h2>
+            <form  action="/sponsor_reg" method="POST">
+              <div class="form-control">
+                <label for="username" class="form-label">User Name:</label>
+                <input type="text" class="form-control" id="username" aria-describedby="userHelp" name="username" placeholder="Enter user name">
+                <small id="userHelp" class="form-text text-muted">Give a unique Username.</small>
+              </div>
+              <br>
+              <div class="form-control">
+                <label for="Email" class="form-label">Email:</label>
+                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="mail" placeholder="Enter Email" value="{{e}}">
+                <small id="emailHelp" class="form-text text-muted">Enter a Valid Email</small>
+              </div>
+              <br>
+              <div class="form-control">
+                <label for="fullname" class="form-label">Enter your Name:</label>
+                <input type="text" class="form-control" id="fullname" name="name" placeholder="Enter user name" value="{{n}}">
+              </div>
+              <br>
+              <div class="form-control">
+                <label for="bn" class="form-label">Enter Brand Name:</label>
+                <input type="text" class="form-control" id="bn" name="bn" placeholder="Enter Brand name" value="{{bn}}">
+              </div>
+              <br>
+              <div class="form-control">
+                <label for="it" class="form-label"> Industry Type:</label>
+                <select name="it" class="form-select">
+                  <option id="it" selected>Industry Type</option>
+                  <option name="it" value="1">Primary</option>
+                  <option name="it" value="2">Secondary</option>
+                  <option name="it" value="3">Tertiary</option>
+                  <option name="it" value="4">Quaternary</option>
+                </select>
+              </div>
+              <br>
+              <div class="form-control">
+                <label for="abt" class="form-label">Enter about your Brand:</label>
+                <input type="text" class="form-control" id="abt" name="abt"value="{{abt}}">
+              </div>
+              <div class="form-group">
+                <label for="pwd" class="form-label">Password</label>
+                <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Password">
+              </div>
+              <br>
+              <button type="submit" class="btn btn-primary">Register</button> 
+              Existing user? <a href="/">Login</a>
+              Want to register as influencer? <a href="/influencer_reg">Register</a>
+              {{m}}
+            </form>
+          </div>
         </div>
       </div>
     </div>

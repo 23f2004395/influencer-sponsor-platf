@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Influencer Sponsorship Platform</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        label { 
+            float: left; 
+        } 
+          
+        span { 
+            display: block; 
+            overflow: hidden; 
+            padding: 0px 4px 0px 6px; 
+        } 
+          
+        input { 
+            width: 70%; 
+        }
+        .profile-card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .profile-card h3 {
+            margin-bottom: 20px;
+        }
+        .profile-card p {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .profile-card label {
+            font-size: 18px;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #007bff;
+        }
+        .profile-card p span {
+            font-weight: bold;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1 class="text-center">Dashboard</h1>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <span class="navbar-brand mb-0 h1">Welcome {{name}}</span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/spons/{{name}}">Current campaigns</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/spons/{{name}}/search">Search Influencers</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/spons/{{name}}/profile">Profile<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="profile-card">
+            <h3>Sponsor Profile</h3>
+            <form action="/spons/{{name}}/profile" method="post">
+                <label for="name">Name:</label>
+                <span>
+                    <input type="text" class="form-control" id="name" name="name" value="{{name}}">
+                </span>
+                <br>
+                <label for="mail">E-Mail:</label>
+                <span>
+                    <input type="text" class="form-control" id="mail" name="mail" value="{{mail}}">
+                </span>
+                <br>
+                <label for="brand_name">Brand:</label>
+                <span>
+                    <input type="text" class="form-control" id="brand_name" name="brand_name" value="{{spons.brand_name}}">
+                </span>
+                <br>
+                <label for="industry">Industry:</label>
+                <span>
+                    <input type="text" class="form-control" id="industry" name="industry" value="{{spons.industry_type}}">
+                </span>
+                <br>
+                <label for="info">Info:</label>
+                <span>
+                    <input type="text" class="form-control" id="info" name="info" value="{{spons.info}}">
+                </span>
+                <br>
+                <label for="totalBudget" class="form-label">Total Budget:</label>
+                <span>
+                    <input type="number" class="form-control" id="totalBudget" name="totalBudget" value="{{spons.total_budget}}">
+                </span>
+                <br>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
