@@ -59,16 +59,40 @@
                 </ul>
             </div>
         </nav>
-        <div class="search-bar">
         <form action="/influ/{{name}}/search" method="post">
-            <div class="input-group">
-                <input type="text" class="form-control" name="search" placeholder="Search for campaigns..." aria-label="Search">
-                <div class="input-group-append">
+            <div class="search-bar">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="search" placeholder="Search for campaigns..." aria-label="Search">
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="category">Category:</label>
+                        <select class="form-control" id="category" name="category">
+                            <option value="">All Categories</option>
+                            {% for category in categories %}
+                            <option value="{{category}}">{{category}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="reach">Budget:</label>
+                        <select class="form-control" id="reach" name="budget">
+                            <option value="">All</option>
+                            <option value="5000-10000">5,000 - 10,000</option>
+                            <option value="10000-50000">10,000 - 50,000</option>
+                            <option value="50000-100000">50,000 - 100,000</option>
+                            <option value="100000-500000">1,00,000 - 5,00,000</option>
+                            <option value="500000-10000000">5,00,000+</option>
+                        </select>
+                    </div>
+                </div>
+                <br>
+                <div class="d-grid col-2 mx-auto">
                     <button class="btn btn-primary" type="submit">Search</button>
                 </div>
             </div>
         </form>
-        </div>
         <h3>Campaigns:</h3>
         {% if campaigns %}
         <div class="campaign-list">
@@ -76,15 +100,21 @@
             <div class="campaign-item">
                 <h5>Campaign : {{campaign[0]}}</h5>
                 <h6>Sponsorer : {{campaign[1]}}</h6>
-                <p>About : {{campaign[2]}}</p>
+                <h6>Brand Name : {{campaign[2]}}</h6>
+                <h6>Industry Type : {{campaign[3]}}</h6>
                 <br>
-                <p>Goals:{{campaign[3]}}</p>
+                About : {{campaign[4]}}
+                <br>
+                Campaign Budget : {{campaign[5]}}
+                <br>
+                Goals : {{campaign[6]}}</p>
             </div>
             {% endfor %}
         </div>
         <a href="/influ/{{name}}/search">{{goback}}</a>
-        {% else %}
+        {% else %}  
         <p class="error">No campaigns avilable.</p>
+        <a href="/influ/{{name}}/search">{{goback}}</a>
         {% endif %}
     </div>
 

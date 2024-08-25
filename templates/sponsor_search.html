@@ -6,6 +6,17 @@
     <title>Influencer Sponsorship Platform</title>
     <link rel="stylesheet" href="/static/style.css">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .search-bar, .filter-bar {
+            margin-top: 20px;
+        }
+        .filter-bar select, .filter-bar input {
+            width: 100%;
+        }
+        .table-custom {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
     <div id="container">
@@ -32,16 +43,54 @@
                 </ul>
             </div>
         </nav>
-
-    <div class="container">
         <form action="/spons/{{name}}/search" method="post">
-            <div class="input-group mb-3">
-                <input name="search" type="text" class="form-control" placeholder="Search here">
-                <div class="input-group-append">
-                    <button class="btn btn-primary" type="submit">Search</button>
+            <div class="container search-bar">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="search" placeholder="Search for influencers...">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="submit">Search</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container filter-bar">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="niche">Niche:</label>
+                        <select id="niche" class="form-control" name="niche">
+                            <option value="">Select Niche</option>
+                            {% for niche in niches %}
+                            <option value="{{niche}}">{{niche}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="insta">Instagram Follower Range:</label>
+                        <select id="insta" class="form-control" name="insta">
+                            <option value="">Select Follower Range</option>
+                            <option value="1000-10000">1-10k</option>
+                            <option value="10000-50000">10k-50k</option>
+                            <option value="50000-100000">50k-100k</option>
+                            <option value="100000-1000000">100k+</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="yt">YouTube Follower Range:</label>
+                        <select id="yt" class="form-control" name="yt">
+                            <option value="">Select YouTube Follower Range</option>
+                            <option value="1000-10000">1-10k</option>
+                            <option value="10000-50000">10k-50k</option>
+                            <option value="50000-100000">50k-100k</option>
+                            <option value="100000-1000000">100k+</option>
+                        </select>
+                    </div>
                 </div>
             </div>
         </form>
+
         <div class="table-container">
             {% if influencers %}
             <table class="table table-bordered">

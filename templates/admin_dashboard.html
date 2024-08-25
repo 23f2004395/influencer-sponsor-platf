@@ -43,7 +43,8 @@
                     <th>Email</th>
                     <th>Role</th>
                     <th>Status</th>
-                    <th>Actions</th>
+                    <th>Edit</th>
+                    <th style="width: 150px;">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -51,46 +52,29 @@
                 {% if ele.type != 0 %}
                 <tr>
                     <td>{{ele.uid}}</td>
-                    <td>{{ele.username}}</td>
-                    <td>{{ele.name}}</td>
-                    <td>{{ele.mail}}</td>
-                    <td>{{ele.type}}</td>
-                    <td>{{ele.status}}</td>
+                    <form action="/admin/{{ele.uid}}" method="post">
+                        <td>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" id="username" name="username" value="{{ele.username}}">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" id="name" name="name" value="{{ele.name}}">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-control">
+                                <input type="mail" class="form-control" id="mail" name="mail" value="{{ele.mail}}">
+                            </div>
+                        </td>
+                        <td>{{ele.type}}</td>
+                        <td>{{ele.status}}</td>
+                        <td>
+                            <button type="submit" class="btn btn-primary">Edit</button>
+                        </td>
+                    </form>
                     <td>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal">Edit</button>
-                        <!-- Modal for editing-->
-                        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="editModalLabel">Edit</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <form>
-                                        <div class="mb-3">
-                                            <label for="name" class="col-form-label">Name:</label>
-                                            <input type="text" class="form-control" id="name" value="{{ele.name}}">
-                                        </div>
-                                        <br>
-                                        <div class="form-control">
-                                            <label for="Email" class="col-form-label">Email:</label>
-                                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="mail" value="{{ele.mail}}">
-                                        </div>
-                                        <br>
-                                        <div class="form-control">
-                                            <label for="type" class="col-form-label">Type:</label>
-                                            <input type="text" class="form-control" id="type" name="type" value="{{ele.type}}">
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
                         <a href="/admin/{{ele.name}}/flag"><button type="button" class="btn btn-danger">Flag</button></a>
                         <a href="/admin/{{ele.name}}/unflag"><button type="button" class="btn btn-danger">Unflag</button></a>
                     </td>

@@ -7,6 +7,19 @@
     <link rel="stylesheet" href="/static/style.css">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        label { 
+            float: left; 
+        } 
+          
+        span { 
+            display: block; 
+            overflow: hidden; 
+            padding: 0px 4px 0px 6px; 
+        } 
+          
+        input { 
+            width: 70%; 
+        }
         .profile-card {
             background-color: #fff;
             padding: 20px;
@@ -52,16 +65,46 @@
             </div>
         </nav>
 
-        <!-- Profile Card -->
         <div class="profile-card">
             <h3>Influencer Profile</h3>
-            <p><span>Name:</span> {{name}}</p>
-            <p><span>Instagram ID:</span> <a href="https://www.{{influ.insta_id}}">{{influ.insta_id}}</a></p>
-            <p><span>Email:</span> {{mail}}</p>
-            <p><span>Niche:</span> {{influ.niche}}</p>
-            <p><span>YouTube ID:</span> <a href="https://www.{{influ.youtube_id}}">{{influ.youtube_id}}</a></p>
-            <p><span>Instagram Followers:</span> {{influ.insta_flwrs}}</p>
-            <p><span>YouTube Subscribers:</span> {{influ.youtube_flwrs}}</p>
+            <form action="/influ/{{name}}/profile" method="post">
+                <label for="name">Name:</label>
+                <span>
+                    <input type="text" class="form-control" id="name" name="name" value="{{name}}">
+                </span>
+                <br>
+                <label for="insta_id">Instagram ID:</label>
+                <span>
+                    <input type="text" class="form-control" id="insta_id" name="insta_id" value="{{influ.insta_id}}">
+                </span>
+                <br>
+                <label for="mail">Email:</label>
+                <span>
+                    <input type="text" class="form-control" id="mail" name="mail" value="{{mail}}">
+                </span>
+                <br>
+                <label for="niche">Niche:</label>
+                <span>
+                    <input type="text" class="form-control" id="niche" name="niche" value="{{influ.niche}}">
+                </span>
+                <br>
+                <label for="youtube_id">YouTube ID:</label>
+                <span>
+                    <input type="text" class="form-control" id="youtube_id" name="youtube_id" value="{{influ.youtube_id}}">
+                </span>
+                <br>
+                <label for="insta_flwrs">Instagram Followers:</label>
+                <span>
+                    <input type="text" class="form-control" id="insta_flwrs" name="insta_flwrs" value="{{influ.insta_flwrs}}">
+                </span>
+                <br>
+                <label for="youtube_flwrs">YouTube Subscribers:</label>
+                <span>
+                    <input type="text" class="form-control" id="youtube_flwrs" name="youtube_flwrs" value="{{influ.youtube_flwrs}}">
+                </span>
+                <br>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
         </div>
     </div>
 
