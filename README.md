@@ -1,5 +1,5 @@
 # Project Report: Influencer Engagement and Sponsorship Coordination Platform
-# by, Rudransh Mathur
+# Rudransh Mathur
 
 ### Problem Statement:
 The project, Influencer Engagement and Sponsorship Coordination Platform is aimed to develop a web-based application that allows sponsors and influencers to create and manage advertising campaigns. The application required features such as user authentication, campaign and ad request management, and search functionalities for sponsors and influencers.
