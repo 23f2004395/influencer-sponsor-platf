@@ -2,6 +2,8 @@ from flask import current_app as app
 from flask import render_template, request, redirect
 from backend.models import *
 
+"""LOGIN"""
+
 
 @app.route('/', methods=['GET', 'POST'])
 def login():
@@ -20,6 +22,9 @@ def login():
                 return redirect('/spons/' + str(u.name))
         else:
             return render_template("login.html", m="Incorrect username or password. Try again!")
+
+
+"""REGISTRATION"""
 
 
 @app.route('/influencer_reg', methods=['GET', 'POST'])
@@ -79,6 +84,9 @@ def sponsor_reg():
         else:
             return render_template('sponsor_reg.html', m="User already exists! Please try again.", e=mail, n=name,
                                    bn=bn, abt=abt, it=it)
+
+
+"""ADMIN"""
 
 
 @app.route('/admin/home')
@@ -199,6 +207,9 @@ def admin_adreq_status(campaign_id, adrequest_id):
     adreq.present_status = 'Active'
     db.session.commit()
     return redirect('/admin/campadreq/' + str(campaign_id))
+
+
+"""INFLUENCER"""
 
 
 @app.route('/influ/<string:name>', methods=['GET', 'POST'])
@@ -389,6 +400,9 @@ def influencer_profile(name):
     return render_template("influencer_profile.html", name=name, mail=u.mail, influ=influ)
 
 
+"""SPONSOR"""
+
+
 @app.route('/spons/<string:name>', methods=['GET', 'POST'])
 def sponsor(name):
     u = User.query.filter_by(name=name).first()
@@ -542,8 +556,10 @@ def sponsor_search(name):
                         return render_template("sponsor_search.html", name=name, influencers=influencers,
                                                back="Go back",
                                                niches=niches)
+                print("IN")
                 # search and niche
                 if influ.niche == niche:
+                    print(niche, influ.niche)
                     influencers.append([u.name, influ.niche, influ.insta_id, influ.insta_flwrs, influ.youtube_id,
                                         influ.youtube_flwrs])
                     return render_template("sponsor_search.html", name=name, influencers=influencers, back="Go back",
